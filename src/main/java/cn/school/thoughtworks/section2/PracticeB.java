@@ -16,24 +16,26 @@ public class PracticeB {
 
         collection1.stream()
                 .forEach(x -> processString(results, x));
+
         return results;
     }
 
     private void processString (Map<String, Integer> results, String s) {
-        int count = 1;
-        String str = s;
 
         if (s.contains("-")) {
+
             String[] arr = s.split("-");
-            str = arr[0];
-            count = Integer.parseInt(arr[1]);
+            String str = arr[0];
+            int count = Integer.parseInt(arr[1]);
+
+            results.compute(str, (k, v) -> (v == null ? count : v + count));
+
+        } else {
+
+            results.compute(s, (k, v) -> (v == null ? 1 : v + 1));
+
         }
 
-        if (results.get(s) == null) {
-            results.put(str, count);
-        } else {
-            results.put(str, results.get(s) + count);
-        }
     }
 
 }
