@@ -23,6 +23,7 @@ public class PracticeD {
     }
 
     private void processString (Map<String, Integer> results, String s) {
+
         if (s.contains("-")) {
 
             String[] arr = s.split("-");
